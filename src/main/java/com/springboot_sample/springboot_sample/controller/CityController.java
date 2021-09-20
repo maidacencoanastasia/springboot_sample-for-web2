@@ -8,19 +8,27 @@ public class CityController {
     CityRepository cityRepository = new CityRepository();
 
     @PostMapping("cities")
-    public String create(@RequestParam String cityName){
+    public String create(@RequestParam String cityName) {
         return cityRepository.create(cityName);
     }
+
+    @GetMapping("cities")
+    public String readAll() {
+        return cityRepository.readAll();
+    }
+
     @GetMapping("cities/{id}")
-    public String read(@PathVariable Integer id){
+    public String read(@PathVariable Integer id) {
         return cityRepository.read(id);
     }
+
     @PutMapping("cities")
-    public String update(){
+    public String update() {
         return "Update city";
     }
+
     @DeleteMapping("cities")
-    public String delete(){
+    public String delete() {
         return "Delete city";
     }
 }

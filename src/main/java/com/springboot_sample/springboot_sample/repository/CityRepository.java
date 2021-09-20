@@ -6,26 +6,35 @@ public class CityRepository {
 
     ArrayList<String> cities = new ArrayList<>();
 
-    public CityRepository(){
+    public CityRepository() {
         this.cities.add("Balti");
         this.cities.add("Kiev");
         this.cities.add("Iasi");
         this.cities.add("Stambul");
     }
 
-    public String create(String cityName){
+    public String create(String cityName) {
         this.cities.add(cityName);
         return "City created";
     }
-    public String read(Integer id){
-        return id + ":" + this.cities.get(id);
+
+    public String readAll() {
+        return this.cities.toString();
     }
 
-    public String update(){
+    public String read(Integer id) {
+        try {
+            return id + ":" + this.cities.get(id);
+        } catch (Exception exception) {
+            return " index not found ";
+        }
+    }
+
+    public String update() {
         return "Update City";
     }
 
-    public String delete(){
+    public String delete() {
         return "Delete City";
     }
 }
