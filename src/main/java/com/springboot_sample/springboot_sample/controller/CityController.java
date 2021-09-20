@@ -11,9 +11,9 @@ public class CityController {
     public String create(@RequestParam String cityName){
         return cityRepository.create(cityName);
     }
-    @GetMapping("cities")
-    public String read(){
-        return "Read city";
+    @GetMapping("cities/{id}")
+    public String read(@PathVariable Integer id){
+        return cityRepository.read(id);
     }
     @PutMapping("cities")
     public String update(){

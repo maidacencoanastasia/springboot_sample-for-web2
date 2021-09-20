@@ -17,8 +17,8 @@ public class CityRepository {
         this.cities.add(cityName);
         return "City created";
     }
-    public String read(){
-        return "Read City";
+    public String read(Integer id){
+        return id + ":" + this.cities.get(id);
     }
 
     public String update(){
