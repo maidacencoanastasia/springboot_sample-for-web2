@@ -14,6 +14,7 @@ public class CityRepository {
     }
 
     public String create(String cityName){
+        this.cities.add(cityName);
         return "City created";
     }
     public String read(){
