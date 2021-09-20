@@ -22,9 +22,9 @@ public class CityController {
         return cityRepository.read(id);
     }
 
-    @PutMapping("cities")
-    public String update() {
-        return "Update city";
+    @PutMapping("cities/{id}")
+    public String update(@PathVariable Integer id, @RequestParam String cityName) {
+        return cityRepository.update(id, cityName);
     }
 
     @DeleteMapping("cities")

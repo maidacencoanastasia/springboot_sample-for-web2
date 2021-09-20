@@ -30,7 +30,8 @@ public class CityRepository {
         }
     }
 
-    public String update() {
+    public String update(Integer id, String cityName) {
+        this.cities.set(id, cityName);
         return "Update City";
     }
 
