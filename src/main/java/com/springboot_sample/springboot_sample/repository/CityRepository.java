@@ -26,7 +26,7 @@ public class CityRepository {
         try {
             return id + ":" + this.cities.get(id);
         } catch (Exception exception) {
-            return " index not found ";
+            return " index can not be found ";
         }
     }
 
@@ -35,11 +35,16 @@ public class CityRepository {
         this.cities.set(id, cityName);
         return "City updated";
         } catch (Exception exception){
-            return "Country not found";
+            return "City can not be found";
         }
     }
 
-    public String delete() {
-        return "Delete City";
+    public String delete(Integer id) {
+        try {
+            this.cities.remove(this.cities.get(id));
+            return "City deleted";
+        } catch (Exception exception){
+            return "City can not be found";
+        }
     }
 }
