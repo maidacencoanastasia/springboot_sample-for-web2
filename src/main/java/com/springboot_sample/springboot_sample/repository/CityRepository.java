@@ -1,20 +1,21 @@
 package com.springboot_sample.springboot_sample.repository;
 
+import com.springboot_sample.springboot_sample.model.City;
+import com.springboot_sample.springboot_sample.model.Country;
+
 import java.util.ArrayList;
 
 public class CityRepository {
 
-    ArrayList<String> cities = new ArrayList<>();
+    ArrayList<City> cities = new ArrayList<City>();
 
-    public CityRepository() {
-        this.cities.add("Balti");
-        this.cities.add("Kiev");
-        this.cities.add("Iasi");
-        this.cities.add("Stambul");
-    }
+    ArrayList<City> countries = new ArrayList<>();
+    public CityRepository(){
+        }
 
     public String create(String cityName) {
-        this.cities.add(cityName);
+        City city = new City(cityName);
+        this.cities.add(city);
         return "City created";
     }
 
@@ -24,27 +25,34 @@ public class CityRepository {
 
     public String read(Integer id) {
         try {
-            return id + ":" + this.cities.get(id);
-        } catch (Exception exception) {
-            return " index can not be found ";
+            City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return city.toString();
+        } catch (Exception exception){
+            return "Not found";
         }
     }
 
     public String update(Integer id, String cityName) {
         try {
-        this.cities.set(id, cityName);
-        return "City updated";
+            City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            city.setName(cityName);
+            return "Country updated";
         } catch (Exception exception){
-            return "City can not be found";
+            return "Country not found";
         }
+    }
+    public String delete(Integer id){
+    try {
+        City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+        if(city == null){
+            return "City not found";            }
+        this.countries.remove(city);
+        return "City deleted";
+    } catch (Exception exception){
+        return "City not found";
     }
 
-    public String delete(Integer id) {
-        try {
-            this.cities.remove(this.cities.get(id));
-            return "City deleted";
-        } catch (Exception exception){
-            return "City can not be found";
-        }
-    }
+}
+
+
 }

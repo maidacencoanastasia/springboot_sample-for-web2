@@ -1,27 +1,25 @@
 package com.springboot_sample.springboot_sample.repository;
 
 
+import com.springboot_sample.springboot_sample.model.Country;
+
 import java.util.ArrayList;
 
 public class CountriesRepository {
-
-    ArrayList<String> countries = new ArrayList<>();
-
+    ArrayList<Country> countries = new ArrayList<>();
     public CountriesRepository(){
-        this.countries.add("Moldova");
-        this.countries.add("Ucraine");
-        this.countries.add("Romania");
-        this.countries.add("Turkey");
     }
 
     public String create(String countryName){
-        this.countries.add(countryName);
+        Country country = new Country(countryName);
+        this.countries.add(country);
         return "Country created";
     }
 
     public String read(Integer id){
         try {
-            return id + ":" + this.countries.get(id);
+            Country country = this.countries.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return country.toString();
         } catch (Exception exception){
             return "Not found";
         }
@@ -33,7 +31,8 @@ public class CountriesRepository {
 
     public String update(Integer id, String countryName){
         try {
-            this.countries.set(id, countryName);
+            Country country = this.countries.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            country.setName(countryName);
             return "Country updated";
         } catch (Exception exception){
             return "Country not found";
@@ -42,7 +41,10 @@ public class CountriesRepository {
 
     public String delete(Integer id){
         try {
-            this.countries.remove(this.countries.get(id));
+            Country country = this.countries.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            if(country == null){
+                return "Country not found";            }
+            this.countries.remove(country);
             return "Country deleted";
         } catch (Exception exception){
             return "Country not found";
