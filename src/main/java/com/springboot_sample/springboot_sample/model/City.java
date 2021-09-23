@@ -3,16 +3,19 @@ package com.springboot_sample.springboot_sample.model;
 public class City {
     private Integer id = null;
     private String name = null;
+
+    private Integer countryId = null;
     public static Integer autoincrementId = 0;
 
-    City(){
+    City() {
 
     }
 
-    public City(String name){
-        Country.autoincrementId++;
-        this.id = Country.autoincrementId;
+    public City(String name, Integer countryId) {
+        City.autoincrementId++;
+        this.id = City.autoincrementId;
         this.name = name;
+        this.countryId = countryId;
     }
 
     public Integer getId() {
@@ -31,11 +34,28 @@ public class City {
         this.name = name;
     }
 
+    public Integer getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
+    }
+
+    //todo
+
+    public String getCountryName() {
+        //todo to implement this method
+        return "Noname";
+    }
+
     @Override
     public String toString() {
         return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", countryId=" + countryId +
+                ", countryName=" + this.getCountryName() +
                 '}';
     }
 

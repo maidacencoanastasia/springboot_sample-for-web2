@@ -9,12 +9,11 @@ public class CityRepository {
 
     ArrayList<City> cities = new ArrayList<City>();
 
-    ArrayList<City> countries = new ArrayList<>();
     public CityRepository(){
         }
 
-    public String create(String cityName) {
-        City city = new City(cityName);
+    public String create(String CityName, Integer countryId){
+        City city = new City(CityName, countryId);
         this.cities.add(city);
         return "City created";
     }
@@ -23,10 +22,10 @@ public class CityRepository {
         return this.cities.toString();
     }
 
-    public String read(Integer id) {
+    public String read(Integer id){
         try {
-            City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
-            return city.toString();
+            City City = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            return City.toString();
         } catch (Exception exception){
             return "Not found";
         }
@@ -46,7 +45,7 @@ public class CityRepository {
         City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
         if(city == null){
             return "City not found";            }
-        this.countries.remove(city);
+        this.cities.remove(city);
         return "City deleted";
     } catch (Exception exception){
         return "City not found";

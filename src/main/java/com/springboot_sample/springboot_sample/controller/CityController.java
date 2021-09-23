@@ -8,8 +8,8 @@ public class CityController {
     CityRepository cityRepository = new CityRepository();
 
     @PostMapping("cities")
-    public String create(@RequestParam String cityName) {
-        return cityRepository.create(cityName);
+    public String create(@RequestParam String cityName, @RequestParam Integer countryId) {
+        return cityRepository.create(cityName, countryId);
     }
 
     @GetMapping("cities")
