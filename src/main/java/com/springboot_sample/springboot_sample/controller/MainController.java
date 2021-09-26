@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
     @GetMapping("/")
     public String mainPage() {
-        return "This is my main page";
+        return "This is my super puper main page )";
     }
 }

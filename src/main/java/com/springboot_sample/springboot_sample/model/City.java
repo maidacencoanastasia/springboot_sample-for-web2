@@ -5,17 +5,19 @@ public class City {
     private String name = null;
 
     private Integer countryId = null;
+    private String countryName;
     public static Integer autoincrementId = 0;
 
     City() {
 
     }
 
-    public City(String name, Integer countryId) {
+    public City(String name, Integer countryId, String countryName) {
         City.autoincrementId++;
         this.id = City.autoincrementId;
         this.name = name;
         this.countryId = countryId;
+        this.countryName = countryName;
     }
 
     public Integer getId() {
@@ -39,14 +41,16 @@ public class City {
     }
 
     public void setCountryId(Integer countryId) {
-        this.countryId = countryId;
+        this.countryId = Country.autoincrementId;
+    }
+//    todo to implement this method какой стране принадлежит город
+
+    public String getCountryName(){
+        return countryName;
     }
 
-    //todo
-
-    public String getCountryName() {
-        //todo to implement this method
-        return "Noname";
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     @Override
@@ -54,8 +58,8 @@ public class City {
         return "City{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", countryId=" + countryId +
-                ", countryName=" + this.getCountryName() +
+                ", cityId=" + countryId +
+                ", cityName=" + this.getCountryName() +
                 '}';
     }
 
