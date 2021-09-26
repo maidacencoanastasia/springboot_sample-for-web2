@@ -37,9 +37,9 @@ public class CityRepository {
             City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
             assert city != null;
             city.setName(cityName);
-            return "Country updated";
+            return "City updated";
         } catch (Exception exception){
-            return "Country not found";
+            return "City not found";
         }
     }
     public String delete(Integer id){
