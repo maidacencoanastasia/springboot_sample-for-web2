@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class CityRepository {
 
-    ArrayList<City> cities = new ArrayList<City>();
+    ArrayList<City> cities = new ArrayList<>();
 
     public CityRepository(){
         }
 
-    public String create(String CityName, Integer countryId){
-        City city = new City(CityName, countryId);
+    public String create(String CityName, Integer countryId,String countryName){
+        City city = new City(CityName, countryId, countryName);
         this.cities.add(city);
         return "City created";
     }
@@ -25,15 +25,17 @@ public class CityRepository {
     public String read(Integer id){
         try {
             City City = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            assert City != null;
             return City.toString();
         } catch (Exception exception){
             return "Not found";
         }
     }
 
-    public String update(Integer id, String cityName) {
+    public String update(Integer id, String name, String cityName) {
         try {
             City city = this.cities.stream().filter(element -> id.equals(element.getId())).findFirst().orElse(null);
+            assert city != null;
             city.setName(cityName);
             return "Country updated";
         } catch (Exception exception){

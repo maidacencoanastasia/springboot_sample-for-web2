@@ -8,7 +8,7 @@ public class City {
     private String countryName;
     public static Integer autoincrementId = 0;
 
-    City() {
+    City(String cityName, Integer countryId) {
 
     }
 
