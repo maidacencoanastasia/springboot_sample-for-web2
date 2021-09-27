@@ -5,11 +5,11 @@ public class Country {
     private String name = null;
     public static Integer autoincrementId = 0;
 
-    Country(){
+    Country() {
 
     }
 
-    public Country(String name){
+    public Country(String name) {
         Country.autoincrementId++;
         this.id = Country.autoincrementId;
         this.name = name;

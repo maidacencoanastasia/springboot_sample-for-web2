@@ -45,7 +45,7 @@ public class City {
     }
 //    todo to implement this method какой стране принадлежит город
 
-    public String getCountryName(){
+    public String getCountryName() {
         return countryName;
     }
 
